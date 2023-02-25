@@ -1,4 +1,4 @@
-# hackathon
+# mlsc_hackathon
 
 A new Flutter project.
 

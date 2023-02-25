@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,45 +49,24 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAFhpY-cR9Ug1-7lpZ9OP2f9HkeOW_JaLI',
-    appId: '1:420268722966:web:76f4809ec6aa3afaa91e37',
-    messagingSenderId: '420268722966',
-    projectId: 'hackathon-111',
-    authDomain: 'hackathon-111.firebaseapp.com',
-    databaseURL: 'https://hackathon-111-default-rtdb.firebaseio.com',
-    storageBucket: 'hackathon-111.appspot.com',
-    measurementId: 'G-L6LEJRYBNS',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCCaes0UZsQhe7m5Pkud1xpUhelvAmByRQ',
-    appId: '1:420268722966:android:5df494bfd08bfebda91e37',
-    messagingSenderId: '420268722966',
-    projectId: 'hackathon-111',
-    databaseURL: 'https://hackathon-111-default-rtdb.firebaseio.com',
-    storageBucket: 'hackathon-111.appspot.com',
+    apiKey: 'AIzaSyBEOg_Jb6FCHfMAL3w6EFOAgQdPnOp3by0',
+    appId: '1:508988353728:android:2f4f789840fcf59ef89125',
+    messagingSenderId: '508988353728',
+    projectId: 'farm-111',
+    databaseURL: 'https://farm-111-default-rtdb.firebaseio.com',
+    storageBucket: 'farm-111.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDgT0fo3Z3u3UJ_nhspu_4yaQPds1YEZEM',
-    appId: '1:420268722966:ios:82a4b628deb3b73ca91e37',
-    messagingSenderId: '420268722966',
-    projectId: 'hackathon-111',
-    databaseURL: 'https://hackathon-111-default-rtdb.firebaseio.com',
-    storageBucket: 'hackathon-111.appspot.com',
-    iosClientId: '420268722966-22p0oom4sdrnlkk70lcuulatt2u83sfc.apps.googleusercontent.com',
-    iosBundleId: 'com.example.hackathon',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDgT0fo3Z3u3UJ_nhspu_4yaQPds1YEZEM',
-    appId: '1:420268722966:ios:82a4b628deb3b73ca91e37',
-    messagingSenderId: '420268722966',
-    projectId: 'hackathon-111',
-    databaseURL: 'https://hackathon-111-default-rtdb.firebaseio.com',
-    storageBucket: 'hackathon-111.appspot.com',
-    iosClientId: '420268722966-22p0oom4sdrnlkk70lcuulatt2u83sfc.apps.googleusercontent.com',
-    iosBundleId: 'com.example.hackathon',
+    apiKey: 'AIzaSyB4I-_IR_idyXo6EXzoL6x3LeggrGc6t6A',
+    appId: '1:508988353728:ios:5539f650a520d634f89125',
+    messagingSenderId: '508988353728',
+    projectId: 'farm-111',
+    databaseURL: 'https://farm-111-default-rtdb.firebaseio.com',
+    storageBucket: 'farm-111.appspot.com',
+    androidClientId: '508988353728-1ivhaqg5j7qef2m3sdq67n2cdunee62n.apps.googleusercontent.com',
+    iosClientId: '508988353728-dhg0kh98tvvubae0gcdcbdcjt9hg15ae.apps.googleusercontent.com',
+    iosBundleId: 'com.example.mlscHackathon',
   );
 }

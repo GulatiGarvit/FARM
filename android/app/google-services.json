@@ -1,35 +1,50 @@
 {
   "project_info": {
-    "project_number": "420268722966",
-    "firebase_url": "https://hackathon-111-default-rtdb.firebaseio.com",
-    "project_id": "hackathon-111",
-    "storage_bucket": "hackathon-111.appspot.com"
+    "project_number": "508988353728",
+    "firebase_url": "https://farm-111-default-rtdb.firebaseio.com",
+    "project_id": "farm-111",
+    "storage_bucket": "farm-111.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:420268722966:android:5df494bfd08bfebda91e37",
+        "mobilesdk_app_id": "1:508988353728:android:2f4f789840fcf59ef89125",
         "android_client_info": {
-          "package_name": "com.example.hackathon"
+          "package_name": "com.example.mlsc_hackathon"
         }
       },
       "oauth_client": [
         {
-          "client_id": "420268722966-spqqv6ibae2nl95j6a8v02vnh442t43r.apps.googleusercontent.com",
+          "client_id": "508988353728-1ivhaqg5j7qef2m3sdq67n2cdunee62n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mlsc_hackathon",
+            "certificate_hash": "8f04a7ff7f396d04febe57637398be725cb42401"
+          }
+        },
+        {
+          "client_id": "508988353728-g9f5hpscvljjvpa7ndplkc3n8r5s4npv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCCaes0UZsQhe7m5Pkud1xpUhelvAmByRQ"
+          "current_key": "AIzaSyBEOg_Jb6FCHfMAL3w6EFOAgQdPnOp3by0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "420268722966-ikj08hv78o9gda2qn60ho3v4m8ci5c3d.apps.googleusercontent.com",
+              "client_id": "508988353728-g9f5hpscvljjvpa7ndplkc3n8r5s4npv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "508988353728-dhg0kh98tvvubae0gcdcbdcjt9hg15ae.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mlscHackathon"
+              }
             }
           ]
         }

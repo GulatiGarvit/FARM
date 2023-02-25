@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>420268722966-22p0oom4sdrnlkk70lcuulatt2u83sfc.apps.googleusercontent.com</string>
+	<string>420268722966-ed30l7d4eva1thr1noej6se39f4i42g4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.420268722966-22p0oom4sdrnlkk70lcuulatt2u83sfc</string>
+	<string>com.googleusercontent.apps.420268722966-ed30l7d4eva1thr1noej6se39f4i42g4</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDgT0fo3Z3u3UJ_nhspu_4yaQPds1YEZEM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.hackathon</string>
+	<string>com.example.mlscHackathon</string>
 	<key>PROJECT_ID</key>
 	<string>hackathon-111</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:420268722966:ios:82a4b628deb3b73ca91e37</string>
+	<string>1:420268722966:ios:39bd6c2278a8113ca91e37</string>
 	<key>DATABASE_URL</key>
 	<string>https://hackathon-111-default-rtdb.firebaseio.com</string>
 </dict>

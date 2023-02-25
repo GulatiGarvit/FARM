@@ -1,80 +1,95 @@
-import 'package:easy_search_bar/easy_search_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon/HomePage/search_bar.dart';
-import 'package:hackathon/HomePage/user_info_bar.dart';
-import 'package:hackathon/HomePage/map.dart';
-import 'package:hackathon/HomePage/theme.dart';
+import 'package:mlsc_hackathon/Helpers/measurement.dart';
 
-class HomePage extends StatefulWidget {
+class Homepage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => HomePageState();
+  State<Homepage> createState() => _HomepageState();
 }
 
-class HomePageState extends State<HomePage> {
-  bool isInfoScreenVisible = true;
-  String address = "Please wait...";
-  String searchValue = '';
-  final List<String> _suggestions = [
-    'LT',
-    'G-Block',
-    'Jaggi',
-    'Main Gate',
-    'Cos',
-    'Hostel H',
-    'Dispensary'
-  ];
+class _HomepageState extends State<Homepage> {
+  var measurements = <Measurement>[];
+  @override
+  void initState() {
+    fetchData().then((value) {
+      setState(() {});
+    });
+    super.initState();
+  }
 
-  Future<List<String>> _fetchSuggestions(String searchValue) async {
-    await Future.delayed(const Duration(milliseconds: 750));
-
-    return _suggestions.where((element) {
-      return element.toLowerCase().contains(searchValue.toLowerCase());
-    }).toList();
+  Future<void> fetchData() async {
+    final snap = await FirebaseDatabase.instance
+        .ref()
+        .child('Measurements')
+        .child(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    for (final snapshot in snap.children) {
+      Measurement measurement = Measurement();
+      measurement.illumination = snapshot.child('illumination').value as int;
+      measurement.moisture = snapshot.child('moisture').value as int;
+      measurement.npk = snapshot.child('npk').value as String;
+      measurement.ph = snapshot.child('pH').value as double;
+      measurements.add(measurement);
+    }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    callback(String address) {
-      setState(() {
-        this.address = address;
-      });
-    }
-
     return Scaffold(
-      appBar: EasySearchBar(
-          backgroundColor: Color(0xFF0C9869),
-          title: const Text('Velo'),
-          onSearch: (value) => setState(() => searchValue = value),
-          asyncSuggestions: (value) async => await _fetchSuggestions(value)),
-      drawer: Drawer(
-          child: ListView(padding: EdgeInsets.zero, children: [
-        const DrawerHeader(
-          decoration: BoxDecoration(
-            color: Color(0xFF0C9869),
-          ),
-          child: Text(
-            'Velo',
-            style: TextStyle(fontSize: 40),
-            textAlign: TextAlign.center,
+      body: SafeArea(
+        child: Container(
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            itemBuilder: (context, index) {
+              return Card(
+                clipBehavior: Clip.antiAlias,
+                elevation: 4,
+                margin: EdgeInsets.only(bottom: 20),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18)),
+                child: InkWell(
+                  onTap: () {},
+                  splashFactory: InkRipple.splashFactory,
+                  child: Container(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text('Moisture Levels'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('pH Levels'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('Soil Illumination Levels'),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('NPK Levels'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
           ),
         ),
-        ListTile(
-            title: const Text('History'), onTap: () => Navigator.pop(context)),
-        ListTile(
-            title: const Text('Pay now'), onTap: () => Navigator.pop(context))
-      ])),
-      body: SafeArea(
-          child: Stack(
-        children: [
-          MyMap(callback),
-          Column(
-            children: [
-              Spacer(),
-              Visibility(child: UserInfoBar(), visible: isInfoScreenVisible)
-            ],
-          )
-        ],
-      )),
+      ),
     );
   }
 }
